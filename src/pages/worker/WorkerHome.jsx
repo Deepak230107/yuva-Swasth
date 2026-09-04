@@ -4,7 +4,8 @@ import {
   Search,
   FilePlus,
   Activity,
-  ChevronRight
+  ChevronRight,
+  LogOut
 } from "lucide-react"
 
 function WorkerHome() {
@@ -16,7 +17,14 @@ function WorkerHome() {
       {/* Header */}
 
       <header className="home-header">
-        <div className="home-header-inner">
+        <div
+          className="home-header-inner"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%"
+          }}
+        >
 
           <div className="brand">
             <div className="brand-mark">
@@ -28,9 +36,38 @@ function WorkerHome() {
             </span>
           </div>
 
-          <div className="worker-role">
+          <div
+            className="worker-role"
+            style={{
+              marginLeft: "auto"
+            }}
+          >
             HEALTHCARE WORKER
           </div>
+
+          <button
+            onClick={() => navigate("/")}
+            title="Logout"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              marginLeft: "20px",
+              padding: "10px 14px",
+              border: "1px solid #ddd",
+              borderRadius: "10px",
+              background: "white",
+              color: "#333",
+              cursor: "pointer",
+              fontSize: "14px",
+              fontWeight: "500"
+            }}
+          >
+            <LogOut size={18} />
+            <span>
+              Logout
+            </span>
+          </button>
 
         </div>
       </header>
