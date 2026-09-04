@@ -1,0 +1,583 @@
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #ffffff;
+  background: #071A2B;
+
+  --navy: #071A2B;
+  --navy-light: #0D2A3F;
+  --green: #18A558;
+  --green-dark: #117A40;
+  --orange: #F47B20;
+  --white: #FFFFFF;
+  --text-muted: #A9B8C4;
+  --border: #234054;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--navy);
+  color: var(--white);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--navy);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 42px;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 48px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange);
+  border-radius: 9px;
+  font-weight: 800;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 12px 0 34px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.phone-input {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.phone-input span {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: var(--text-muted);
+  border-right: 1px solid var(--border);
+}
+
+.phone-input input {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+}
+
+.phone-input input::placeholder {
+  color: #718494;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--orange);
+  color: white;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.primary-button:hover {
+  background: #d96516;
+}
+
+.register-text {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.register-text span {
+  color: var(--green);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.security-text {
+  margin: 28px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: #718494;
+  font-size: 12px;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--navy);
+  color: white;
+  letter-spacing: 6px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.otp-input::placeholder {
+  color: #718494;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.register-page {
+  min-height: 100vh;
+  padding: 40px 24px;
+  background: var(--navy);
+}
+
+.register-card {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 42px;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.register-header {
+  margin-bottom: 32px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: var(--navy);
+  color: white;
+}
+
+.form-group input::placeholder {
+  color: #718494;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--green);
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .register-card {
+    padding: 28px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.health-id-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--navy);
+}
+
+.health-id-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 42px;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.success-mark {
+  width: 64px;
+  height: 64px;
+  margin: 10px 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+}
+
+.health-id-card h1 {
+  margin: 0;
+  max-width: 430px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.health-id-subtitle {
+  margin: 14px 0 30px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.health-id-box {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--navy);
+}
+
+.health-id-box > p {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.health-id-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.health-id-value span {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--navy-light);
+  color: white;
+}
+
+.copy-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.copied-text {
+  display: block;
+  margin-top: 10px;
+  color: var(--green);
+  font-size: 12px;
+}
+
+.health-id-card .primary-button {
+  margin-top: 24px;
+}
+
+.home-page {
+  min-height: 100vh;
+  background: var(--navy);
+}
+
+.home-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--navy-light);
+}
+
+.home-header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-weight: 700;
+}
+
+.home-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 52px 28px;
+}
+
+.welcome-section h1 {
+  margin: 0;
+  font-size: 38px;
+}
+
+.welcome-section > p:last-child {
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.health-id-strip {
+  margin-top: 30px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--navy-light);
+}
+
+.health-id-strip div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.health-id-strip span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.health-id-strip strong {
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.appointment-card {
+  margin-top: 18px;
+  padding: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  background: var(--orange);
+  color: white;
+}
+
+.appointment-card p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.appointment-card h2 {
+  margin: 8px 0 5px;
+  font-size: 21px;
+}
+
+.appointment-card span,
+.appointment-card small {
+  display: block;
+  opacity: 0.9;
+}
+
+.appointment-card small {
+  margin-top: 5px;
+}
+
+.section-title {
+  margin: 38px 0 16px;
+  font-size: 20px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  min-height: 145px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--navy-light);
+  color: white;
+  transition: 0.2s;
+}
+
+.feature-card:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--green);
+}
+
+.feature-card > div:nth-child(2) {
+  flex: 1;
+}
+
+.feature-card strong,
+.feature-card span {
+  display: block;
+}
+
+.feature-card span {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.feature-card > svg {
+  align-self: flex-end;
+  color: var(--text-muted);
+}
+
+@media (max-width: 800px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .home-main {
+    padding: 36px 20px;
+  }
+
+  .welcome-section h1 {
+    font-size: 30px;
+  }
+
+  .health-id-strip div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-assistant-button {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--orange);
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.2s;
+  z-index: 100;
+}
+
+.ai-assistant-button:hover {
+  background: #d96516;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 520px) {
+  .ai-assistant-button {
+    right: 20px;
+    bottom: 20px;
+  }
+}
