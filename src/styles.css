@@ -581,3 +581,241 @@ a {
     bottom: 20px;
   }
 }
+
+.module-page {
+  min-height: 100vh;
+  background: var(--navy);
+}
+
+.module-header {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.back-button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--navy-light);
+  color: white;
+}
+
+.module-label {
+  margin: 0 0 4px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.module-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.module-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 28px;
+}
+
+.patient-summary {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--navy-light);
+}
+
+.patient-summary span,
+.patient-summary small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.patient-summary strong {
+  display: block;
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.module-section-heading {
+  margin: 38px 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.module-section-heading h2 {
+  margin: 5px 0 0;
+  font-size: 22px;
+}
+
+.module-section-heading > span {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.record-card {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--navy-light);
+  color: white;
+  transition: 0.2s;
+}
+
+.record-card:hover {
+  border-color: var(--green);
+}
+
+.record-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--green);
+}
+
+.record-content {
+  flex: 1;
+}
+
+.record-content strong,
+.record-content span,
+.record-content small {
+  display: block;
+}
+
+.record-content span {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.record-content small {
+  margin-top: 4px;
+  color: #718494;
+  font-size: 12px;
+}
+
+.record-card > svg {
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: rgba(24, 165, 88, 0.15);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge.completed {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.journey-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-item {
+  display: flex;
+  gap: 16px;
+}
+
+.journey-line {
+  position: relative;
+  width: 42px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.journey-dot {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  z-index: 2;
+}
+
+.journey-connector {
+  position: absolute;
+  top: 38px;
+  bottom: -20px;
+  width: 1px;
+  background: var(--border);
+}
+
+.journey-content {
+  flex: 1;
+  margin-bottom: 24px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--navy-light);
+}
+
+.journey-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.journey-event {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.journey-content h3 {
+  margin: 10px 0 6px;
+  font-size: 17px;
+}
+
+.journey-content p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+.journey-content small {
+  display: block;
+  margin-top: 10px;
+  color: #718494;
+  font-size: 12px;
+}
