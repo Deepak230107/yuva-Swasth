@@ -1,7 +1,19 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 function Login() {
   const navigate = useNavigate()
+
+  const [loginType, setLoginType] = useState("mobile")
+  const [identifier, setIdentifier] = useState("")
+
+  const handleContinue = () => {
+    if (!identifier.trim()) {
+      return
+    }
+
+    navigate("/otp")
+  }
 
   return (
     <div className="login-page">
@@ -22,25 +34,92 @@ function Login() {
           </p>
         </div>
 
-        <div className="form-group">
-          <label>Mobile Number</label>
 
-          <div className="phone-input">
-            <span>+91</span>
+        {/* Login type */}
 
-            <input
-              type="tel"
-              placeholder="Enter mobile number"
-            />
-          </div>
+        <div className="login-toggle">
+
+          <button
+            type="button"
+            onClick={() => {
+              setLoginType("mobile")
+              setIdentifier("")
+            }}
+            className={
+              loginType === "mobile"
+                ? "login-toggle-active"
+                : "login-toggle-button"
+            }
+          >
+            Mobile Number
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setLoginType("healthId")
+              setIdentifier("")
+            }}
+            className={
+              loginType === "healthId"
+                ? "login-toggle-active"
+                : "login-toggle-button"
+            }
+          >
+            Health ID
+          </button>
+
         </div>
 
+
+        {/* Identifier */}
+
+        <div className="form-group">
+
+          <label>
+            {loginType === "mobile"
+              ? "Mobile Number"
+              : "SWASTH Health ID"}
+          </label>
+
+
+          {loginType === "mobile" ? (
+
+            <div className="phone-input">
+
+              <span>+91</span>
+
+              <input
+                type="tel"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                placeholder="Enter mobile number"
+                maxLength="10"
+              />
+
+            </div>
+
+          ) : (
+
+            <input
+              type="text"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              placeholder="Enter your SWASTH Health ID"
+            />
+
+          )}
+
+        </div>
+
+
         <button
-          onClick={() => navigate("/otp")}
+          onClick={handleContinue}
           className="primary-button"
         >
           Continue
         </button>
+
 
         <p className="register-text">
           New to SWASTH?{" "}
@@ -48,6 +127,7 @@ function Login() {
             Create an account
           </span>
         </p>
+
 
         <p className="security-text">
           Your health information is securely protected.

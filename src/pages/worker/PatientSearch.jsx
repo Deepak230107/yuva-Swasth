@@ -1,15 +1,28 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ArrowLeft, Search, UserRound } from "lucide-react"
+import {
+  ArrowLeft,
+  Search,
+  UserRound,
+  AlertCircle
+} from "lucide-react"
+
 import { patient } from "../../data/mockData"
 
 function PatientSearch() {
   const navigate = useNavigate()
+
   const [healthId, setHealthId] = useState("")
   const [found, setFound] = useState(false)
+  const [searched, setSearched] = useState(false)
 
   const searchPatient = () => {
-    if (healthId.trim() === patient.healthId) {
+    const enteredId = healthId.trim().toLowerCase()
+    const actualId = patient.healthId.trim().toLowerCase()
+
+    setSearched(true)
+
+    if (enteredId === actualId) {
       setFound(true)
     } else {
       setFound(false)
@@ -19,21 +32,36 @@ function PatientSearch() {
   return (
     <div className="module-page">
 
+      {/* Header */}
+
       <header className="module-header">
+
         <button
           onClick={() => navigate("/worker")}
           className="back-button"
+          title="Back"
         >
           <ArrowLeft size={20} />
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Find Patient</h1>
+          <p className="module-label">
+            SWASTH
+          </p>
+
+          <h1>
+            Find Patient
+          </h1>
         </div>
+
       </header>
 
+
+      {/* Main */}
+
       <main className="module-main">
+
+        {/* Search Card */}
 
         <section className="worker-search-card">
 
@@ -42,17 +70,31 @@ function PatientSearch() {
           </div>
 
           <div>
-            <h2>Search by Health ID</h2>
+            <h2>
+              Search by Health ID
+            </h2>
+
             <p>
               Enter the patient's unique SWASTH Health ID.
             </p>
           </div>
 
+
           <div className="health-id-search">
+
             <input
               type="text"
               value={healthId}
-              onChange={(e) => setHealthId(e.target.value)}
+              onChange={(e) => {
+                setHealthId(e.target.value)
+                setSearched(false)
+                setFound(false)
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  searchPatient()
+                }
+              }}
               placeholder="Example: SW-82X7-19Q4"
             />
 
@@ -62,10 +104,13 @@ function PatientSearch() {
             >
               Search
             </button>
+
           </div>
 
         </section>
 
+
+        {/* Patient Found */}
 
         {found && (
           <section className="patient-result">
@@ -75,7 +120,10 @@ function PatientSearch() {
             </div>
 
             <div className="record-content">
-              <strong>{patient.name}</strong>
+
+              <strong>
+                {patient.name}
+              </strong>
 
               <span>
                 Health ID: {patient.healthId}
@@ -84,6 +132,7 @@ function PatientSearch() {
               <small>
                 {patient.gender} · DOB: {patient.dob}
               </small>
+
             </div>
 
             <button
@@ -96,7 +145,37 @@ function PatientSearch() {
           </section>
         )}
 
+
+        {/* Patient Not Found */}
+
+        {searched && !found && (
+          <section className="patient-result">
+
+            <div className="record-icon">
+              <AlertCircle size={22} />
+            </div>
+
+            <div className="record-content">
+
+              <strong>
+                Patient not found
+              </strong>
+
+              <span>
+                No patient matches this Health ID.
+              </span>
+
+              <small>
+                Check the Health ID and try again.
+              </small>
+
+            </div>
+
+          </section>
+        )}
+
       </main>
+
     </div>
   )
 }

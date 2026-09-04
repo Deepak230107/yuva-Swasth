@@ -11,6 +11,8 @@
   --white: #FFFFFF;
   --text-muted: #A9B8C4;
   --border: #234054;
+    --background: #071A2B;
+  --card: #0D2A3F;
 }
 
 * {
@@ -1272,4 +1274,868 @@ a {
 
 .form-field select:focus {
   border-color: var(--green);
+}
+
+.login-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--navy);
+}
+
+.login-toggle-button,
+.login-toggle-active {
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-toggle-button {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.login-toggle-active {
+  background: var(--green);
+  color: white;
+}
+
+.profile-summary {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.profile-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.profile-summary-row span {
+  color: var(--text-muted);
+}
+
+.profile-summary-row strong {
+  color: white;
+  text-align: right;
+}
+
+.abha-box {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.abha-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.abha-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.abha-heading h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.abha-heading p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.abha-description {
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.abha-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  background: var(--navy);
+  color: white;
+  font-family: inherit;
+}
+
+.secondary-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: var(--green);
+}
+
+.abha-note {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.abha-linked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.abha-linked div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.abha-linked strong {
+  font-size: 13px;
+}
+
+.abha-linked span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   SWASTH AI ASSISTANT
+   ========================= */
+
+.assistant-page {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.assistant-panel {
+  width: 100%;
+  max-width: 460px;
+  height: min(700px, 90vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.assistant-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.assistant-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: var(--green);
+  color: white;
+}
+
+.assistant-brand strong {
+  display: block;
+  font-size: 14px;
+}
+
+.assistant-brand span {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.assistant-close {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.assistant-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.assistant-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px;
+}
+
+.assistant-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.assistant-avatar {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.assistant-bubble {
+  padding: 14px 15px;
+  border-radius: 4px 14px 14px 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.assistant-bubble strong {
+  font-size: 13px;
+}
+
+.assistant-bubble p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.assistant-suggestions {
+  margin-top: 28px;
+}
+
+.assistant-suggestions > p {
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.assistant-suggestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.assistant-suggestion:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--green);
+}
+
+.suggestion-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--green);
+}
+
+.assistant-suggestion span {
+  flex: 1;
+  font-size: 13px;
+}
+
+.assistant-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.assistant-input-area input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+  background: var(--navy);
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.assistant-input-area input:focus {
+  border-color: var(--green);
+}
+
+.assistant-send {
+  width: 44px;
+  border: none;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.assistant-send:hover {
+  opacity: 0.9;
+}
+
+.assistant-user-message {
+  display: flex;
+  justify-content: flex-end;
+  margin: 14px 0;
+}
+
+.user-bubble {
+  max-width: 80%;
+  padding: 11px 14px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--green);
+  color: white;
+}
+
+.user-bubble p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.assistant-bubble p {
+  margin: 0;
+}
+
+.assistant-action-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.assistant-action-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ai-assistant-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.ai-assistant-button:hover {
+  transform: translateY(-2px);
+}
+
+.assistant-floating-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  width: min(390px, calc(100vw - 32px));
+  height: min(590px, calc(100vh - 120px));
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 999;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 600px) {
+
+  .assistant-floating-panel {
+    right: 12px;
+    bottom: 82px;
+    width: calc(100vw - 24px);
+    height: calc(100vh - 110px);
+  }
+
+  .ai-assistant-button {
+    right: 16px;
+    bottom: 16px;
+  }
+
+}
+
+/* =========================================
+   TELECONSULTATION
+   ========================================= */
+
+.teleconsultation-page {
+  min-height: 100vh;
+  background: var(--background, #f7f8f6);
+}
+
+.teleconsultation-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 32px;
+  border-bottom: 1px solid var(--border, #e5e7e3);
+  background: var(--card, #ffffff);
+}
+
+.teleconsultation-header h1 {
+  margin: 2px 0 0;
+  font-size: 24px;
+}
+
+.teleconsultation-main {
+  width: min(1000px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 32px 0 50px;
+}
+
+
+/* Consultation information */
+
+.consultation-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 22px;
+  border: 1px solid var(--border, #e5e7e3);
+  border-radius: 16px;
+  background: var(--card, #ffffff);
+}
+
+.consultation-info > div:first-child span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #777;
+}
+
+.consultation-info h2 {
+  margin: 6px 0 4px;
+  font-size: 21px;
+}
+
+.consultation-info p {
+  margin: 0;
+  color: #666;
+}
+
+.secure-consultation {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #eef7ef;
+  color: #3f7148;
+}
+
+
+/* Video */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #1d211f;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-video {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #252a27;
+}
+
+.doctor-placeholder {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #56635b;
+  color: white;
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.video-name {
+  margin-top: 18px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.video-status {
+  margin-top: 6px;
+  color: #b8d8bd;
+  font-size: 13px;
+}
+
+
+/* Patient preview */
+
+.patient-video {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 190px;
+  height: 135px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  background: #303633;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.patient-camera-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #4d5952;
+}
+
+.patient-camera-placeholder span {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #75827a;
+  color: white;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.patient-video-name {
+  position: absolute;
+  left: 9px;
+  bottom: 7px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.camera-off-message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px;
+  color: #ddd;
+  font-size: 12px;
+}
+
+
+/* Call controls */
+
+.call-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.call-control-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 50%;
+  background: var(--card, #fff);
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.call-control-button:hover {
+  transform: translateY(-1px);
+}
+
+.call-control-button.active {
+  background: #ecefed;
+}
+
+.end-call-button {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 19px;
+  border: none;
+  border-radius: 24px;
+  background: #b84b4b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.end-call-button:hover {
+  opacity: 0.9;
+}
+
+
+/* Consultation chat */
+
+.consultation-chat {
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border, #e5e7e3);
+  border-radius: 16px;
+  background: var(--card, #ffffff);
+}
+
+.consultation-chat-header {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--border, #e5e7e3);
+}
+
+.consultation-chat-message {
+  padding: 18px;
+  color: #555;
+  font-size: 14px;
+}
+
+.consultation-chat-input {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid var(--border, #e5e7e3);
+}
+
+.consultation-chat-input input {
+  flex: 1;
+  padding: 11px 13px;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 9px;
+  outline: none;
+}
+
+.consultation-chat-input button {
+  padding: 0 18px;
+  border: none;
+  border-radius: 9px;
+  background: #526b5a;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Patient information */
+
+.consultation-patient-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--border, #e5e7e3);
+  border-radius: 16px;
+  background: var(--card, #ffffff);
+}
+
+.consultation-patient-info strong {
+  font-size: 16px;
+}
+
+.consultation-patient-info span {
+  color: #777;
+  font-size: 13px;
+}
+
+
+/* Appointment button */
+
+.appointment-actions {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.teleconsultation-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border: none;
+  border-radius: 9px;
+  background: #526b5a;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.teleconsultation-button:hover {
+  opacity: 0.9;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .teleconsultation-header {
+    padding: 18px;
+  }
+
+  .teleconsultation-main {
+    width: calc(100% - 24px);
+    padding-top: 20px;
+  }
+
+  .consultation-info {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .video-container {
+    height: 420px;
+    border-radius: 14px;
+  }
+
+  .patient-video {
+    width: 130px;
+    height: 95px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .call-controls {
+    gap: 9px;
+  }
+
+  .call-control-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .end-call-button {
+    width: 48px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 22px;
+  }
+
+  .end-call-button span {
+    display: none;
+  }
+
+  .appointment-actions {
+    align-items: stretch;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .teleconsultation-button {
+    width: 100%;
+  }
 }

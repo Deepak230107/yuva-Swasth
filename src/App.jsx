@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import RoleSelection from "./pages/RoleSelection"
 
+
 import Login from "./pages/auth/Login"
 import OTP from "./pages/auth/OTP"
 import Register from "./pages/auth/Register"
@@ -14,6 +15,7 @@ import Medicines from "./pages/patient/Medicines"
 import Labs from "./pages/patient/Labs"
 import Appointments from "./pages/patient/Appointments"
 import CareJourney from "./pages/patient/CareJourney"
+import Teleconsultation from "./pages/patient/Teleconsultation"
 
 import WorkerHome from "./pages/worker/WorkerHome"
 import PatientSearch from "./pages/worker/PatientSearch"
@@ -32,6 +34,7 @@ function App() {
         {/* Role selection */}
         <Route path="/" element={<RoleSelection />} />
 
+
         {/* Patient authentication */}
         <Route path="/login" element={<Login />} />
         <Route path="/otp" element={<OTP />} />
@@ -45,6 +48,10 @@ function App() {
         <Route path="/labs" element={<Labs />} />
         <Route path="/appointments" element={<Appointments />} />
         <Route path="/care-journey" element={<CareJourney />} />
+        <Route
+  path="/teleconsultation"
+  element={<Teleconsultation />}
+/>
 
         {/* Healthcare worker authentication */}
         <Route path="/worker-login" element={<WorkerLogin />} />

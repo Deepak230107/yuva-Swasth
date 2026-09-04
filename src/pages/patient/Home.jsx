@@ -1,4 +1,6 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+
 import {
   FileText,
   Pill,
@@ -6,32 +8,64 @@ import {
   CalendarDays,
   Route,
   MessageCircle,
-  ChevronRight
+  ChevronRight,
+  X
 } from "lucide-react"
 
 import { patient, appointments } from "../../data/mockData"
+import Assistant from "../Assistant"
 
 function Home() {
+
   const navigate = useNavigate()
 
+  const [assistantOpen, setAssistantOpen] = useState(false)
+
   const features = [
-    { name: "Health Records", icon: FileText, path: "/records" },
-    { name: "Medicines", icon: Pill, path: "/medicines" },
-    { name: "Lab Reports", icon: FlaskConical, path: "/labs" },
-    { name: "Appointments", icon: CalendarDays, path: "/appointments" },
-    { name: "Care Journey", icon: Route, path: "/care-journey" }
+    {
+      name: "Health Records",
+      icon: FileText,
+      path: "/records"
+    },
+    {
+      name: "Medicines",
+      icon: Pill,
+      path: "/medicines"
+    },
+    {
+      name: "Lab Reports",
+      icon: FlaskConical,
+      path: "/labs"
+    },
+    {
+      name: "Appointments",
+      icon: CalendarDays,
+      path: "/appointments"
+    },
+    {
+      name: "Care Journey",
+      icon: Route,
+      path: "/care-journey"
+    }
   ]
 
   return (
     <div className="home-page">
 
       {/* Header */}
+
       <header className="home-header">
+
         <div className="home-header-inner">
 
           <div className="brand">
-            <div className="brand-mark">S</div>
-            <span>SWASTH</span>
+            <div className="brand-mark">
+              S
+            </div>
+
+            <span>
+              SWASTH
+            </span>
           </div>
 
           <button className="profile-button">
@@ -39,13 +73,16 @@ function Home() {
           </button>
 
         </div>
+
       </header>
 
 
       {/* Main */}
+
       <main className="home-main">
 
         {/* Welcome */}
+
         <section className="welcome-section">
 
           <p className="eyebrow">
@@ -64,9 +101,11 @@ function Home() {
 
 
         {/* Health ID */}
+
         <section className="health-id-strip">
 
           <div>
+
             <span>
               SWASTH Health ID
             </span>
@@ -74,12 +113,14 @@ function Home() {
             <strong>
               {patient.healthId}
             </strong>
+
           </div>
 
         </section>
 
 
         {/* Appointment */}
+
         <section className="appointment-card">
 
           <div>
@@ -108,6 +149,7 @@ function Home() {
 
 
         {/* Health Features */}
+
         <section>
 
           <h2 className="section-title">
@@ -132,6 +174,7 @@ function Home() {
                   </div>
 
                   <div>
+
                     <strong>
                       {feature.name}
                     </strong>
@@ -139,6 +182,7 @@ function Home() {
                     <span>
                       View details
                     </span>
+
                   </div>
 
                   <ChevronRight size={19} />
@@ -154,13 +198,29 @@ function Home() {
       </main>
 
 
-      {/* AI Assistant */}
+      {/* Floating AI Assistant */}
+
+      {assistantOpen && (
+        <Assistant
+          onClose={() => setAssistantOpen(false)}
+        />
+      )}
+
+
+      {/* AI Button */}
+
       <button
-        onClick={() => navigate("/assistant")}
+        onClick={() => setAssistantOpen(!assistantOpen)}
         className="ai-assistant-button"
         title="SWASTH AI Assistant"
       >
-        <MessageCircle size={22} />
+
+        {assistantOpen ? (
+          <X size={21} />
+        ) : (
+          <MessageCircle size={21} />
+        )}
+
       </button>
 
     </div>
