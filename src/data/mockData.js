@@ -87,8 +87,10 @@ export const medicines = [
     duration: "3 days",
     prescribedBy: "Dr. Priya Sharma",
     prescribedDate: "02 August 2026",
-    status: "Active"
+    status: "Active",
+    purpose: "Helps reduce fever and relieve body pain."
   },
+
   {
     medicineId: "MED002",
     patientId: "P001",
@@ -98,7 +100,8 @@ export const medicines = [
     duration: "3 days",
     prescribedBy: "Dr. Priya Sharma",
     prescribedDate: "02 August 2026",
-    status: "Active"
+    status: "Active",
+    purpose: "Helps replace fluids and salts lost during dehydration."
   }
 ]
 
@@ -144,8 +147,24 @@ export const careJourney = [
     event: "Lab Test",
     description: "Complete Blood Count and Blood Glucose performed."
   },
-  {
+    {
     journeyId: "CJ003",
+    patientId: "P001",
+    date: "05 August 2026",
+    facility: "Kaveri Nagar Primary Health Centre",
+    healthWorker: "Dr. Priya Sharma",
+    event: "Specialist Referral",
+    description: "Referred to Madurai District Hospital for specialist consultation.",
+    referral: {
+      from: "Kaveri Nagar Primary Health Centre",
+      to: "Madurai District Hospital",
+      department: "General Medicine",
+      reason: "Specialist consultation",
+      status: "Appointment Scheduled"
+    }
+  },
+  {
+    journeyId: "CJ004",
     patientId: "P001",
     date: "18 September 2026",
     facility: "Madurai District Hospital",

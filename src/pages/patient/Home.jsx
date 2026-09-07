@@ -9,7 +9,8 @@ import {
   Route,
   MessageCircle,
   ChevronRight,
-  X
+  X,
+  LogOut
 } from "lucide-react"
 
 import { patient, appointments } from "../../data/mockData"
@@ -49,6 +50,10 @@ function Home() {
     }
   ]
 
+  const handleLogout = () => {
+    navigate("/")
+  }
+
   return (
     <div className="home-page">
 
@@ -68,8 +73,12 @@ function Home() {
             </span>
           </div>
 
-          <button className="profile-button">
-            {patient.name.charAt(0)}
+          <button
+            className="profile-button"
+            onClick={handleLogout}
+            title="Logout"
+          >
+            <LogOut size={20} />
           </button>
 
         </div>

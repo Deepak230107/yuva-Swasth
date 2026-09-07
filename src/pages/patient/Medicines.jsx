@@ -9,6 +9,7 @@ function Medicines() {
     <div className="module-page">
 
       <header className="module-header">
+
         <button
           onClick={() => navigate("/home")}
           className="back-button"
@@ -20,6 +21,7 @@ function Medicines() {
           <p className="module-label">SWASTH</p>
           <h1>Medicines</h1>
         </div>
+
       </header>
 
       <main className="module-main">
@@ -31,17 +33,20 @@ function Medicines() {
         </section>
 
         <div className="module-section-heading">
+
           <div>
             <p className="eyebrow">CURRENT MEDICATION</p>
             <h2>Your medicines</h2>
           </div>
 
           <span>{medicines.length} medicines</span>
+
         </div>
 
         <div className="record-list">
 
           {medicines.map((medicine) => (
+
             <div
               key={medicine.medicineId}
               className="record-card"
@@ -52,6 +57,7 @@ function Medicines() {
               </div>
 
               <div className="record-content">
+
                 <strong>{medicine.name}</strong>
 
                 <span>
@@ -59,13 +65,25 @@ function Medicines() {
                 </span>
 
                 <small>
-                  Duration: {medicine.duration} · Prescribed by {medicine.prescribedBy}
+                  {medicine.purpose}
                 </small>
 
                 <small>
-                  <Clock size={12} style={{ display: "inline", marginRight: "4px" }} />
+                  Duration: {medicine.duration} · Prescribed by{" "}
+                  {medicine.prescribedBy}
+                </small>
+
+                <small>
+                  <Clock
+                    size={12}
+                    style={{
+                      display: "inline",
+                      marginRight: "4px"
+                    }}
+                  />
                   Started {medicine.prescribedDate}
                 </small>
+
               </div>
 
               <span className="status-badge">
@@ -73,11 +91,13 @@ function Medicines() {
               </span>
 
             </div>
+
           ))}
 
         </div>
 
       </main>
+
     </div>
   )
 }
