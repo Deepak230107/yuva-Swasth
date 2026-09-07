@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import ThemeToggle from "../../components/ThemeToggle"
 
 import {
   FileText,
@@ -15,36 +17,42 @@ import {
 
 import { patient, appointments } from "../../data/mockData"
 import Assistant from "../Assistant"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Home() {
-
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [assistantOpen, setAssistantOpen] = useState(false)
 
   const features = [
     {
       name: "Health Records",
+      label: t("healthRecords"),
       icon: FileText,
       path: "/records"
     },
     {
       name: "Medicines",
+      label: t("medicines"),
       icon: Pill,
       path: "/medicines"
     },
     {
       name: "Lab Reports",
+      label: t("labReports"),
       icon: FlaskConical,
       path: "/labs"
     },
     {
       name: "Appointments",
+      label: t("appointments"),
       icon: CalendarDays,
       path: "/appointments"
     },
     {
       name: "Care Journey",
+      label: t("careJourney"),
       icon: Route,
       path: "/care-journey"
     }
@@ -64,6 +72,7 @@ function Home() {
         <div className="home-header-inner">
 
           <div className="brand">
+
             <div className="brand-mark">
               S
             </div>
@@ -71,15 +80,30 @@ function Home() {
             <span>
               SWASTH
             </span>
+
           </div>
 
-          <button
-            className="profile-button"
-            onClick={handleLogout}
-            title="Logout"
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px"
+            }}
           >
-            <LogOut size={20} />
-          </button>
+
+            <LanguageSelector />
+
+            <ThemeToggle />
+
+            <button
+              className="profile-button"
+              onClick={handleLogout}
+              title={t("logout")}
+            >
+              <LogOut size={20} />
+            </button>
+
+          </div>
 
         </div>
 
@@ -162,7 +186,7 @@ function Home() {
         <section>
 
           <h2 className="section-title">
-            Your health
+            {t("yourHealth")}
           </h2>
 
           <div className="feature-grid">
@@ -185,11 +209,11 @@ function Home() {
                   <div>
 
                     <strong>
-                      {feature.name}
+                      {feature.label}
                     </strong>
 
                     <span>
-                      View details
+                      {t("viewDetails")}
                     </span>
 
                   </div>
@@ -221,7 +245,7 @@ function Home() {
       <button
         onClick={() => setAssistantOpen(!assistantOpen)}
         className="ai-assistant-button"
-        title="SWASTH AI Assistant"
+        title={t("healthAssistant")}
       >
 
         {assistantOpen ? (

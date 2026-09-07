@@ -1,7 +1,5 @@
 :root {
   font-family: Inter, Arial, sans-serif;
-  color: #ffffff;
-  background: #071A2B;
 
   --navy: #071A2B;
   --navy-light: #0D2A3F;
@@ -11,8 +9,14 @@
   --white: #FFFFFF;
   --text-muted: #A9B8C4;
   --border: #234054;
-    --background: #071A2B;
+
+  --background: #071A2B;
   --card: #0D2A3F;
+
+  --text: #FFFFFF;
+  --text-secondary: #A9B8C4;
+  --input-background: #071A2B;
+  --hover-background: rgba(255, 255, 255, 0.06);
 }
 
 * {
@@ -23,8 +27,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--navy);
-  color: var(--white);
+  background: var(--background);
+  color: var(--text);
 }
 
 button,
@@ -2205,4 +2209,342 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+
+/* =========================================
+   LIGHT MODE
+   ========================================= */
+
+body.light {
+  --navy: #F7F8F6;
+  --navy-light: #FFFFFF;
+
+  --background: #F7F8F6;
+  --card: #FFFFFF;
+
+  --white: #17221C;
+  --text: #17221C;
+  --text-secondary: #5F6B64;
+  --text-muted: #66736C;
+
+  --border: #DDE3DE;
+
+  --input-background: #FFFFFF;
+  --hover-background: rgba(0, 0, 0, 0.04);
+}
+
+
+/* Page backgrounds */
+
+body.light .login-page,
+body.light .register-page,
+body.light .health-id-page,
+body.light .role-page,
+body.light .home-page,
+body.light .module-page,
+body.light .assistant-page,
+body.light .teleconsultation-page {
+  background: var(--background);
+}
+
+
+/* Cards */
+
+body.light .login-card,
+body.light .register-card,
+body.light .health-id-card,
+body.light .health-id-strip,
+body.light .feature-card,
+body.light .patient-summary,
+body.light .record-card,
+body.light .journey-content,
+body.light .worker-search-card,
+body.light .patient-result,
+body.light .worker-patient-card,
+body.light .worker-stat-card,
+body.light .worker-action-card,
+body.light .consultation-form,
+body.light .abha-box,
+body.light .assistant-panel,
+body.light .assistant-floating-panel,
+body.light .consultation-info,
+body.light .consultation-chat,
+body.light .consultation-patient-info {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+
+/* Headers */
+
+body.light .home-header,
+body.light .module-header,
+body.light .teleconsultation-header {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+
+/* Main text */
+
+body.light .login-header h1,
+body.light .role-header h1,
+body.light .module-header h1,
+body.light .welcome-section h1,
+body.light .module-section-heading h2,
+body.light .worker-patient-card h2,
+body.light .worker-search-card h2,
+body.light .consultation-info h2,
+body.light .form-heading h2,
+body.light .assistant-brand strong,
+body.light .health-id-card h1 {
+  color: var(--text);
+}
+
+
+/* Secondary text */
+
+body.light .subtitle,
+body.light .welcome-section > p:last-child,
+body.light .patient-summary span,
+body.light .patient-summary small,
+body.light .module-section-heading > span,
+body.light .record-content span,
+body.light .record-content small,
+body.light .journey-top,
+body.light .journey-content p,
+body.light .journey-content small,
+body.light .worker-search-card p,
+body.light .worker-patient-card p,
+body.light .worker-patient-card span,
+body.light .worker-stat-card span,
+body.light .worker-action-card span,
+body.light .form-heading p:last-child,
+body.light .abha-description,
+body.light .abha-note,
+body.light .assistant-brand span,
+body.light .assistant-suggestions > p,
+body.light .consultation-patient-info span {
+  color: var(--text-secondary);
+}
+
+
+/* Inputs */
+
+body.light .phone-input,
+body.light .otp-input,
+body.light .form-group input,
+body.light .form-group select,
+body.light .form-field input,
+body.light .form-field textarea,
+body.light .form-field select,
+body.light .worker-login-input,
+body.light .health-id-search input,
+body.light .abha-box input,
+body.light .assistant-input-area input {
+  background: var(--input-background);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+
+/* Input placeholders */
+
+body.light input::placeholder,
+body.light textarea::placeholder {
+  color: #8A958F;
+}
+
+
+/* Phone prefix */
+
+body.light .phone-input span {
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+
+/* Buttons */
+
+body.light .back-button,
+body.light .copy-button,
+body.light .login-toggle,
+body.light .login-toggle-button {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+
+/* Feature/action cards */
+
+body.light .feature-card,
+body.light .worker-action-card,
+body.light .assistant-suggestion {
+  color: var(--text);
+}
+
+body.light .feature-card span,
+body.light .worker-action-card span {
+  color: var(--text-secondary);
+}
+
+
+/* Assistant */
+
+body.light .assistant-bubble {
+  background: #F0F3F1;
+}
+
+body.light .assistant-bubble p {
+  color: var(--text-secondary);
+}
+
+body.light .assistant-suggestion {
+  background: transparent;
+  color: var(--text);
+}
+
+body.light .assistant-suggestion:hover {
+  background: var(--hover-background);
+}
+
+body.light .suggestion-icon {
+  background: #EEF2EF;
+}
+
+body.light .assistant-action-button {
+  color: var(--text);
+}
+
+body.light .assistant-action-button:hover {
+  background: var(--hover-background);
+}
+
+
+/* Profile */
+
+body.light .profile-summary {
+  border-color: var(--border);
+}
+
+body.light .profile-summary-row strong {
+  color: var(--text);
+}
+
+
+/* ABHA */
+
+body.light .abha-icon {
+  background: #F0F3F1;
+}
+
+body.light .abha-linked {
+  background: #F3F5F3;
+}
+
+
+/* Status */
+
+body.light .status-badge {
+  background: rgba(24, 165, 88, 0.12);
+}
+
+
+/* Login toggle */
+
+body.light .login-toggle-button {
+  color: var(--text-secondary);
+}
+
+
+/* Security text */
+
+body.light .security-text {
+  color: #7C8781;
+}
+
+
+/* Teleconsultation */
+
+body.light .consultation-info > div:first-child span {
+  color: #68736D;
+}
+
+body.light .consultation-info p {
+  color: var(--text-secondary);
+}
+
+body.light .call-control-button {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.light .call-control-button.active {
+  background: #ECEFED;
+}
+
+body.light .consultation-chat-message {
+  color: var(--text-secondary);
+}
+
+body.light .consultation-chat-input input {
+  background: var(--card);
+  color: var(--text);
+}
+
+
+/* Referral */
+
+body.light .referral-details {
+  background: #F4F6F4;
+}
+
+body.light .referral-route small,
+body.light .referral-info small,
+body.light .referral-status span {
+  color: var(--text-secondary);
+}
+
+
+/* Hover states */
+
+body.light .feature-card:hover,
+body.light .record-card:hover,
+body.light .worker-action-card:hover,
+body.light .assistant-suggestion:hover {
+  border-color: var(--green);
+}
+
+
+/* Journey connector */
+
+body.light .journey-connector {
+  background: var(--border);
+}
+
+/* Role Selection - Light Mode */
+
+body.light .role-card {
+  background: #FFFFFF;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.light .role-card strong {
+  color: #17221C;
+}
+
+body.light .role-card span {
+  color: #66736C;
+}
+
+body.light .role-header h1 {
+  color: #17221C;
+}
+
+body.light .role-header p:last-child {
+  color: #66736C;
 }
