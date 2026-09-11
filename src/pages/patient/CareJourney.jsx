@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+
 import {
   ArrowLeft,
   Activity,
@@ -12,41 +14,73 @@ import { patient, careJourney } from "../../data/mockData"
 
 function CareJourney() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
+
   const [openReferral, setOpenReferral] = useState(null)
 
   return (
     <div className="module-page">
 
       <header className="module-header">
+
         <button
           onClick={() => navigate("/home")}
           className="back-button"
+          title={t("back")}
         >
           <ArrowLeft size={20} />
         </button>
 
         <div>
           <p className="module-label">SWASTH</p>
-          <h1>Care Journey</h1>
+
+          <h1>
+            {t("careJourney")}
+          </h1>
         </div>
+
       </header>
+
 
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
-          <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+
+          <span>
+            {t("patient")}
+          </span>
+
+          <strong>
+            {patient.name}
+          </strong>
+
+          <small>
+            {t("healthId")}: {patient.healthId}
+          </small>
+
         </section>
 
+
         <div className="module-section-heading">
+
           <div>
-            <p className="eyebrow">CONTINUITY OF CARE</p>
-            <h2>Your health journey</h2>
+
+            <p className="eyebrow">
+              {t("continuityOfCare")}
+            </p>
+
+            <h2>
+              {t("yourHealthJourney")}
+            </h2>
+
           </div>
 
-          <span>{careJourney.length} events</span>
+          <span>
+            {careJourney.length} {t("events")}
+          </span>
+
         </div>
+
 
         <div className="journey-list">
 
@@ -73,28 +107,40 @@ function CareJourney() {
 
                 </div>
 
+
                 <div className="journey-content">
 
                   <div className="journey-top">
-                    <span>{item.date}</span>
+
+                    <span>
+                      {item.date}
+                    </span>
 
                     <span className="journey-event">
                       {item.event}
                     </span>
+
                   </div>
 
-                  <h3>{item.facility}</h3>
+
+                  <h3>
+                    {item.facility}
+                  </h3>
+
 
                   <p>
                     {item.description}
                   </p>
 
+
                   <small>
                     {item.healthWorker}
                   </small>
 
+
                   {isReferral && (
                     <>
+
                       <button
                         className="referral-button"
                         onClick={() =>
@@ -103,9 +149,10 @@ function CareJourney() {
                           )
                         }
                       >
+
                         {isOpen
-                          ? "Hide referral details"
-                          : "View referral details"
+                          ? t("hideReferralDetails")
+                          : t("viewReferralDetails")
                         }
 
                         {isOpen ? (
@@ -113,55 +160,88 @@ function CareJourney() {
                         ) : (
                           <ChevronDown size={17} />
                         )}
+
                       </button>
+
 
                       {isOpen && (
                         <div className="referral-details">
 
                           <div className="referral-status">
-                            <span>Referral status</span>
+
+                            <span>
+                              {t("referralStatus")}
+                            </span>
+
                             <strong>
                               {item.referral.status}
                             </strong>
+
                           </div>
+
 
                           <div className="referral-route">
 
                             <div>
-                              <small>Referred from</small>
+
+                              <small>
+                                {t("referredFrom")}
+                              </small>
+
                               <strong>
                                 {item.referral.from}
                               </strong>
+
                             </div>
+
 
                             <ArrowRight size={20} />
 
+
                             <div>
-                              <small>Referred to</small>
+
+                              <small>
+                                {t("referredTo")}
+                              </small>
+
                               <strong>
                                 {item.referral.to}
                               </strong>
+
                             </div>
 
                           </div>
+
 
                           <div className="referral-info">
 
                             <div>
-                              <small>Department</small>
+
+                              <small>
+                                {t("department")}
+                              </small>
+
                               <strong>
                                 {item.referral.department}
                               </strong>
+
                             </div>
 
+
                             <div>
-                              <small>Reason</small>
+
+                              <small>
+                                {t("reason")}
+                              </small>
+
                               <strong>
                                 {item.referral.reason}
                               </strong>
+
                             </div>
 
                           </div>
+
 
                           <button
                             className="primary-button referral-action"
@@ -169,12 +249,16 @@ function CareJourney() {
                               navigate("/teleconsultation")
                             }
                           >
-                            View Teleconsultation
+
+                            {t("viewTeleconsultation")}
+
                             <ArrowRight size={17} />
+
                           </button>
 
                         </div>
                       )}
+
                     </>
                   )}
 

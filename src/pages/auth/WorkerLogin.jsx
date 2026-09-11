@@ -1,66 +1,174 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ShieldCheck } from "lucide-react"
+import { Eye, EyeOff, ShieldCheck } from "lucide-react"
 
 function WorkerLogin() {
   const navigate = useNavigate()
 
-  return (
-    <div className="min-h-screen bg-[#071a2b] flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-[#0d263b] border border-white/10 rounded-2xl p-8">
+  const [workerId, setWorkerId] = useState("")
+  const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState("")
 
-        <div className="mb-10">
-          <div className="worker-login-icon">
-            <ShieldCheck size={24} />
+  const handleLogin = () => {
+    setError("")
+
+    if (!workerId.trim() || !password.trim()) {
+      setError("Please enter your Worker ID and password.")
+      return
+    }
+
+    // Demo healthcare worker credentials
+    if (workerId === "HW1001" && password === "Swasth@123") {
+      navigate("/worker")
+      return
+    }
+
+    setError("Invalid Worker ID or password.")
+  }
+
+  return (
+    <div className="login-page">
+
+      <div className="login-card">
+
+        {/* Brand */}
+
+        <div className="brand">
+          <div className="brand-mark">
+            S
           </div>
 
-          <p className="module-label mt-5">
+          <span>
             SWASTH
+          </span>
+        </div>
+
+
+        {/* Header */}
+
+        <div className="login-header">
+
+          <p className="eyebrow">
+            SECURE STAFF ACCESS
           </p>
 
-          <h1 className="text-3xl font-bold text-white">
+          <h1>
             Healthcare Worker
           </h1>
 
-          <p className="text-gray-400 mt-2">
-            Securely access patient records and manage care.
+          <p className="subtitle">
+            Access patient records, manage care and coordinate referrals securely.
           </p>
+
         </div>
 
-        <label className="block text-sm font-medium text-white mb-2">
-          Worker ID
-        </label>
 
-        <input
-          type="text"
-          placeholder="Enter worker ID"
-          className="worker-login-input"
-        />
+        {/* Worker ID */}
 
-        <label className="block text-sm font-medium text-white mb-2 mt-5">
-          Password
-        </label>
+        <div className="form-group">
 
-        <input
-          type="password"
-          placeholder="Enter password"
-          className="worker-login-input"
-        />
+          <label>
+            Healthcare Worker ID
+          </label>
+
+          <input
+            type="text"
+            value={workerId}
+            onChange={(e) => {
+              setWorkerId(e.target.value)
+              setError("")
+            }}
+            placeholder="Enter your Worker ID"
+            className="worker-login-input"
+          />
+
+        </div>
+
+
+        {/* Password */}
+
+        <div className="form-group">
+
+          <label>
+            Password
+          </label>
+
+          <div className="password-wrapper">
+
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                setError("")
+              }}
+              placeholder="Enter your password"
+              className="worker-login-input"
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="password-toggle"
+              aria-label={
+                showPassword
+                  ? "Hide password"
+                  : "Show password"
+              }
+            >
+              {showPassword ? (
+                <EyeOff size={19} />
+              ) : (
+                <Eye size={19} />
+              )}
+            </button>
+
+          </div>
+
+        </div>
+
+
+        {/* Error */}
+
+        {error && (
+          <p className="login-error">
+            {error}
+          </p>
+        )}
+
+
+        {/* Sign In */}
 
         <button
-          onClick={() => navigate("/worker")}
-          className="primary-button w-full mt-6"
+          onClick={handleLogin}
+          className="primary-button"
         >
           Sign In
         </button>
 
-        <button
-          onClick={() => navigate("/")}
-          className="worker-back-login"
-        >
-          Back to patient login
-        </button>
+
+
+
+        {/* Back */}
+
+        <p className="register-text">
+
+          <span onClick={() => navigate("/")}>
+            ← Back to patient login
+          </span>
+
+        </p>
+
+
+        {/* Security */}
+
+        <p className="security-text">
+          Your access is restricted to authorized healthcare personnel.
+        </p>
 
       </div>
+
     </div>
   )
 }

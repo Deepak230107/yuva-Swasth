@@ -2548,3 +2548,95 @@ body.light .role-header h1 {
 body.light .role-header p:last-child {
   color: #66736C;
 }
+
+/* Healthcare Worker Login */
+
+.worker-login-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #061827;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.worker-login-input::placeholder {
+  color: #718397;
+}
+
+.worker-login-input:focus {
+  border-color: #18b56b;
+  box-shadow: 0 0 0 3px rgba(24, 181, 107, 0.10);
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper .worker-login-input {
+  padding-right: 52px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+  border: none !important;
+  color: #718397;
+  cursor: pointer;
+  border-radius: 9px;
+  padding: 0;
+}
+
+.password-toggle:hover {
+  color: #18b56b;
+  background: rgba(24, 181, 107, 0.08) !important;
+}
+
+.login-error {
+  margin: -2px 0 14px;
+  padding: 10px 13px;
+  border-radius: 9px;
+  background: rgba(220, 70, 70, 0.10);
+  border: 1px solid rgba(220, 70, 70, 0.20);
+  color: #ff8585;
+  font-size: 13px;
+}
+
+.worker-demo-box {
+  margin-top: 18px;
+  padding: 11px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(24, 181, 107, 0.15);
+  background: rgba(24, 181, 107, 0.05);
+
+  color: #8193a5;
+  font-size: 12px;
+}
+
+.worker-demo-box svg {
+  color: #18b56b;
+}
+
+.worker-demo-box strong {
+  color: #b8c7d5;
+}

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, Pill, Clock } from "lucide-react"
 import { patient, medicines } from "../../data/mockData"
 
 function Medicines() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="module-page">
@@ -13,13 +15,14 @@ function Medicines() {
         <button
           onClick={() => navigate("/home")}
           className="back-button"
+          title={t("back")}
         >
           <ArrowLeft size={20} />
         </button>
 
         <div>
           <p className="module-label">SWASTH</p>
-          <h1>Medicines</h1>
+          <h1>{t("medicines")}</h1>
         </div>
 
       </header>
@@ -27,19 +30,28 @@ function Medicines() {
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>
+            {t("healthId")}: {patient.healthId}
+          </small>
         </section>
 
         <div className="module-section-heading">
 
           <div>
-            <p className="eyebrow">CURRENT MEDICATION</p>
-            <h2>Your medicines</h2>
+            <p className="eyebrow">
+              {t("currentMedication")}
+            </p>
+
+            <h2>
+              {t("yourMedicines")}
+            </h2>
           </div>
 
-          <span>{medicines.length} medicines</span>
+          <span>
+            {medicines.length} {t("medicinesCount")}
+          </span>
 
         </div>
 
@@ -58,7 +70,9 @@ function Medicines() {
 
               <div className="record-content">
 
-                <strong>{medicine.name}</strong>
+                <strong>
+                  {medicine.name}
+                </strong>
 
                 <span>
                   {medicine.dosage} · {medicine.frequency}
@@ -69,8 +83,8 @@ function Medicines() {
                 </small>
 
                 <small>
-                  Duration: {medicine.duration} · Prescribed by{" "}
-                  {medicine.prescribedBy}
+                  {t("duration")}: {medicine.duration} ·{" "}
+                  {t("prescribedBy")} {medicine.prescribedBy}
                 </small>
 
                 <small>
@@ -81,7 +95,8 @@ function Medicines() {
                       marginRight: "4px"
                     }}
                   />
-                  Started {medicine.prescribedDate}
+
+                  {t("started")} {medicine.prescribedDate}
                 </small>
 
               </div>

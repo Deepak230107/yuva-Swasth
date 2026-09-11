@@ -11,8 +11,9 @@ function OTP() {
   const registrationData = location.state?.registrationData
 
   const handleVerify = () => {
-    if (otp.length !== 6) {
-      alert("Please enter a valid 6-digit OTP.")
+    // Demo OTP
+    if (otp !== "3074") {
+      alert("Invalid OTP. Please try again.")
       return
     }
 
@@ -46,10 +47,9 @@ function OTP() {
           <h1>Verify your number</h1>
 
           <p className="subtitle">
-            Enter the 6-digit OTP sent to your mobile number.
+            Enter the 4-digit OTP sent to your mobile number.
           </p>
         </div>
-
 
         <div className="form-group">
 
@@ -61,17 +61,19 @@ function OTP() {
             type="text"
             value={otp}
             onChange={(e) => {
-              const value = e.target.value.replace(/\D/g, "")
+              const value = e.target.value
+                .replace(/\D/g, "")
+                .slice(0, 4)
+
               setOtp(value)
             }}
-            maxLength="6"
+            maxLength="4"
             inputMode="numeric"
-            placeholder="Enter 6-digit OTP"
+            placeholder="Enter 4-digit OTP"
             className="otp-input"
           />
 
         </div>
-
 
         <button
           onClick={handleVerify}
@@ -79,7 +81,6 @@ function OTP() {
         >
           Verify & Continue
         </button>
-
 
         <p className="register-text">
           Didn't receive the OTP?{" "}

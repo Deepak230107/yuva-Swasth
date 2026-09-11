@@ -9,10 +9,40 @@ function Login() {
 
   const handleContinue = () => {
     if (!identifier.trim()) {
+      alert(
+        loginType === "mobile"
+          ? "Please enter your mobile number."
+          : "Please enter your SWASTH Health ID."
+      )
       return
     }
 
-    navigate("/otp")
+    // Demo mobile OTP
+    if (loginType === "mobile") {
+      if (identifier !== "8610053326") {
+        alert("Please enter the registered mobile number.")
+        return
+      }
+
+      alert("OTP sent successfully!")
+
+      navigate("/otp", {
+        state: {
+          mode: "login",
+          phone: identifier
+        }
+      })
+
+      return
+    }
+
+    // Health ID login
+    navigate("/otp", {
+      state: {
+        mode: "login",
+        healthId: identifier
+      }
+    })
   }
 
   return (
@@ -33,7 +63,6 @@ function Login() {
             Access your health records and care journey securely.
           </p>
         </div>
-
 
         {/* Login type */}
 
@@ -71,7 +100,6 @@ function Login() {
 
         </div>
 
-
         {/* Identifier */}
 
         <div className="form-group">
@@ -82,7 +110,6 @@ function Login() {
               : "SWASTH Health ID"}
           </label>
 
-
           {loginType === "mobile" ? (
 
             <div className="phone-input">
@@ -92,9 +119,16 @@ function Login() {
               <input
                 type="tel"
                 value={identifier}
-                onChange={(e) => setIdentifier(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10)
+
+                  setIdentifier(value)
+                }}
                 placeholder="Enter mobile number"
                 maxLength="10"
+                inputMode="numeric"
               />
 
             </div>
@@ -112,7 +146,6 @@ function Login() {
 
         </div>
 
-
         <button
           onClick={handleContinue}
           className="primary-button"
@@ -120,14 +153,12 @@ function Login() {
           Continue
         </button>
 
-
         <p className="register-text">
           New to SWASTH?{" "}
           <span onClick={() => navigate("/register")}>
             Create an account
           </span>
         </p>
-
 
         <p className="security-text">
           Your health information is securely protected.
