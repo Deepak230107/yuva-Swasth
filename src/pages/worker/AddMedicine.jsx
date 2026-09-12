@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, Save } from "lucide-react"
 import { patient, medicines } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function AddMedicine() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [form, setForm] = useState({
     name: "",
@@ -59,8 +62,12 @@ function AddMedicine() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Prescribe Medicine</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("worker.prescribeMedicine")}</h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -68,9 +75,9 @@ function AddMedicine() {
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("worker.patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>{t("healthId.myHealthId")}: {patient.healthId}</small>
         </section>
 
         <form
@@ -79,16 +86,16 @@ function AddMedicine() {
         >
 
           <div className="form-heading">
-            <p className="eyebrow">NEW PRESCRIPTION</p>
-            <h2>Medicine details</h2>
+            <p className="eyebrow">{t("worker.newPrescription")}</p>
+            <h2>{t("worker.medicineDetails")}</h2>
             <p>
-              Add the medication prescribed during this consultation.
+              {t("worker.medicineInstruction")}
             </p>
           </div>
 
           <div className="form-field">
             <label htmlFor="name">
-              Medicine name
+              {t("worker.medicineName")}
             </label>
 
             <input
@@ -96,14 +103,14 @@ function AddMedicine() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="Example: Paracetamol 500 mg"
+              placeholder={t("worker.medicineNamePlaceholder")}
               required
             />
           </div>
 
           <div className="form-field">
             <label htmlFor="dosage">
-              Dosage
+              {t("worker.dosage")}
             </label>
 
             <input
@@ -111,14 +118,14 @@ function AddMedicine() {
               name="dosage"
               value={form.dosage}
               onChange={handleChange}
-              placeholder="Example: 1 tablet"
+              placeholder={t("worker.dosagePlaceholder")}
               required
             />
           </div>
 
           <div className="form-field">
             <label htmlFor="frequency">
-              Frequency
+              {t("worker.frequency")}
             </label>
 
             <input
@@ -126,14 +133,14 @@ function AddMedicine() {
               name="frequency"
               value={form.frequency}
               onChange={handleChange}
-              placeholder="Example: Twice a day"
+              placeholder={t("worker.frequencyPlaceholder")}
               required
             />
           </div>
 
           <div className="form-field">
             <label htmlFor="duration">
-              Duration
+              {t("worker.duration")}
             </label>
 
             <input
@@ -141,7 +148,7 @@ function AddMedicine() {
               name="duration"
               value={form.duration}
               onChange={handleChange}
-              placeholder="Example: 5 days"
+              placeholder={t("worker.durationPlaceholder")}
               required
             />
           </div>
@@ -151,7 +158,7 @@ function AddMedicine() {
             className="primary-button save-record-button"
           >
             <Save size={18} />
-            Save Prescription
+            {t("worker.savePrescription")}
           </button>
 
         </form>

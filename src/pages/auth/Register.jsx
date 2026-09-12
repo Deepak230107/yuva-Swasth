@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Register() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [form, setForm] = useState({
     name: "",
@@ -31,12 +34,12 @@ function Register() {
       !form.gender ||
       !form.mobile.trim()
     ) {
-      alert("Please fill in all required details.")
+      alert(t("auth.requiredDetails"))
       return
     }
 
     if (form.mobile.length !== 10) {
-      alert("Please enter a valid 10-digit mobile number.")
+      alert(t("auth.validMobile"))
       return
     }
 
@@ -52,32 +55,35 @@ function Register() {
     <div className="register-page">
       <div className="register-card">
 
-        <div className="brand">
-          <div className="brand-mark">S</div>
-          <span>SWASTH</span>
+        <div className="brand-row">
+          <div className="brand">
+            <div className="brand-mark">S</div>
+            <span>{t("common.brand")}</span>
+          </div>
+          <LanguageSelector />
         </div>
 
         <div className="register-header">
-          <p className="eyebrow">CREATE YOUR PROFILE</p>
+          <p className="eyebrow">{t("auth.createProfile")}</p>
 
-          <h1>Tell us about yourself</h1>
+          <h1>{t("auth.tellUsAboutYou")}</h1>
 
           <p className="subtitle">
-            These details help us maintain your health record.
+            {t("auth.registrationSubtitle")}
           </p>
         </div>
 
         <div className="registration-form">
 
           <div className="form-group">
-            <label>Full Name *</label>
+            <label>{t("auth.fullNameLabel")}</label>
 
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="Enter your full name"
+              placeholder={t("auth.fullNamePlaceholder")}
             />
           </div>
 
@@ -85,7 +91,7 @@ function Register() {
           <div className="form-row">
 
             <div className="form-group">
-              <label>Date of Birth *</label>
+              <label>{t("auth.dateOfBirth")}</label>
 
               <input
                 type="date"
@@ -97,7 +103,7 @@ function Register() {
 
 
             <div className="form-group">
-              <label>Gender *</label>
+              <label>{t("auth.gender")}</label>
 
               <select
                 name="gender"
@@ -105,19 +111,19 @@ function Register() {
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Select
+                  {t("auth.select")}
                 </option>
 
                 <option value="Female">
-                  Female
+                  {t("auth.female")}
                 </option>
 
                 <option value="Male">
-                  Male
+                  {t("auth.male")}
                 </option>
 
                 <option value="Other">
-                  Other
+                  {t("auth.other")}
                 </option>
               </select>
             </div>
@@ -126,7 +132,7 @@ function Register() {
 
 
           <div className="form-group">
-            <label>Mobile Number *</label>
+            <label>{t("auth.mobileNumber")}</label>
 
             <div className="phone-input">
 
@@ -137,7 +143,7 @@ function Register() {
                 name="mobile"
                 value={form.mobile}
                 onChange={handleChange}
-                placeholder="Enter mobile number"
+                placeholder={t("auth.enterMobile")}
                 maxLength="10"
               />
 
@@ -146,14 +152,14 @@ function Register() {
 
 
           <div className="form-group">
-            <label>Address / House No.</label>
+            <label>{t("auth.address")}</label>
 
             <input
               type="text"
               name="address"
               value={form.address}
               onChange={handleChange}
-              placeholder="House number, street / locality"
+              placeholder={t("auth.addressPlaceholder")}
             />
           </div>
 
@@ -161,27 +167,27 @@ function Register() {
           <div className="form-row">
 
             <div className="form-group">
-              <label>Village</label>
+              <label>{t("auth.village")}</label>
 
               <input
                 type="text"
                 name="village"
                 value={form.village}
                 onChange={handleChange}
-                placeholder="Village"
+                placeholder={t("auth.village")}
               />
             </div>
 
 
             <div className="form-group">
-              <label>District</label>
+              <label>{t("auth.district")}</label>
 
               <input
                 type="text"
                 name="district"
                 value={form.district}
                 onChange={handleChange}
-                placeholder="District"
+                placeholder={t("auth.district")}
               />
             </div>
 
@@ -191,20 +197,20 @@ function Register() {
           <div className="form-row">
 
             <div className="form-group">
-              <label>State</label>
+              <label>{t("auth.state")}</label>
 
               <input
                 type="text"
                 name="state"
                 value={form.state}
                 onChange={handleChange}
-                placeholder="State"
+                placeholder={t("auth.state")}
               />
             </div>
 
 
             <div className="form-group">
-              <label>PIN Code</label>
+              <label>{t("auth.pinCode")}</label>
 
               <input
                 type="text"
@@ -212,7 +218,7 @@ function Register() {
                 value={form.pin}
                 onChange={handleChange}
                 maxLength="6"
-                placeholder="PIN code"
+                placeholder={t("auth.pinCodePlaceholder")}
               />
             </div>
 
@@ -220,14 +226,14 @@ function Register() {
 
 
           <div className="form-group">
-            <label>Emergency Contact</label>
+            <label>{t("auth.emergencyContact")}</label>
 
             <input
               type="tel"
               name="emergencyContact"
               value={form.emergencyContact}
               onChange={handleChange}
-              placeholder="Emergency contact number"
+              placeholder={t("auth.emergencyContactPlaceholder")}
             />
           </div>
 
@@ -238,12 +244,12 @@ function Register() {
           onClick={handleContinue}
           className="primary-button"
         >
-          Continue to OTP
+          {t("auth.continueOtp")}
         </button>
 
 
         <p className="security-text">
-          Your information is kept secure and private.
+          {t("auth.privateInfo")}
         </p>
 
       </div>

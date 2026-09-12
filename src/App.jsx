@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
+import LanguageSelection from "./pages/LanguageSelection"
 import RoleSelection from "./pages/RoleSelection"
 
 
@@ -16,6 +17,7 @@ import Labs from "./pages/patient/Labs"
 import Appointments from "./pages/patient/Appointments"
 import CareJourney from "./pages/patient/CareJourney"
 import Teleconsultation from "./pages/patient/Teleconsultation"
+import GPS from "./pages/patient/GPS"
 
 import WorkerHome from "./pages/worker/WorkerHome"
 import PatientSearch from "./pages/worker/PatientSearch"
@@ -26,13 +28,16 @@ import AddLabResult from "./pages/worker/AddLabResult"
 
 
 function App() {
+
   return (
     <BrowserRouter>
 
       <Routes>
 
-        {/* Role selection */}
         <Route path="/" element={<RoleSelection />} />
+
+        {/* Role selection */}
+        <Route path="/role" element={<RoleSelection />} />
 
 
         {/* Patient authentication */}
@@ -48,6 +53,7 @@ function App() {
         <Route path="/labs" element={<Labs />} />
         <Route path="/appointments" element={<Appointments />} />
         <Route path="/care-journey" element={<CareJourney />} />
+        <Route path="/gps" element={<GPS />} />
         <Route
   path="/teleconsultation"
   element={<Teleconsultation />}

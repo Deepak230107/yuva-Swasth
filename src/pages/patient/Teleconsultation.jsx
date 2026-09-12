@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import {
   ArrowLeft,
   Mic,
@@ -15,9 +16,11 @@ import {
   patient,
   appointments
 } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Teleconsultation() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [micOn, setMicOn] = useState(true)
   const [cameraOn, setCameraOn] = useState(true)
@@ -49,13 +52,17 @@ function Teleconsultation() {
         <div>
 
           <p className="module-label">
-            SWASTH
+            {t("common.brand")}
           </p>
 
           <h1>
-            Teleconsultation
+            {t("nav.teleconsultation")}
           </h1>
 
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -70,15 +77,15 @@ function Teleconsultation() {
           <div>
 
             <span>
-              YOUR CONSULTATION
+              {t("teleconsultation.yourConsultation")}
             </span>
 
             <h2>
-              {appointment?.specialty || "Doctor Consultation"}
+              {appointment?.specialty || t("teleconsultation.doctorConsultation")}
             </h2>
 
             <p>
-              {appointment?.doctor || "Healthcare Provider"}
+              {appointment?.doctor || t("teleconsultation.healthcareProvider")}
             </p>
 
           </div>
@@ -88,7 +95,7 @@ function Teleconsultation() {
             <ShieldCheck size={18} />
 
             <span>
-              Secure consultation
+              {t("teleconsultation.secureConsultation")}
             </span>
 
           </div>
@@ -113,7 +120,7 @@ function Teleconsultation() {
             </div>
 
             <div className="video-status">
-              Connected
+              {t("teleconsultation.connected")}
             </div>
 
           </div>
@@ -134,13 +141,13 @@ function Teleconsultation() {
                 <VideoOff size={25} />
 
                 <span>
-                  Camera is off
+                  {t("teleconsultation.cameraOff")}
                 </span>
               </div>
             )}
 
             <div className="patient-video-name">
-              You
+              {t("teleconsultation.you")}
             </div>
 
           </div>
@@ -159,7 +166,7 @@ function Teleconsultation() {
                 ? "call-control-button"
                 : "call-control-button active"
             }
-            title={micOn ? "Mute microphone" : "Unmute microphone"}
+            title={micOn ? t("teleconsultation.muteMic") : t("teleconsultation.unmuteMic")}
           >
             {micOn ? (
               <Mic size={21} />
@@ -176,7 +183,7 @@ function Teleconsultation() {
                 ? "call-control-button"
                 : "call-control-button active"
             }
-            title={cameraOn ? "Turn off camera" : "Turn on camera"}
+            title={cameraOn ? t("teleconsultation.turnOffCamera") : t("teleconsultation.turnOnCamera")}
           >
             {cameraOn ? (
               <Video size={21} />
@@ -193,7 +200,7 @@ function Teleconsultation() {
                 ? "call-control-button active"
                 : "call-control-button"
             }
-            title="Open consultation chat"
+            title={t("teleconsultation.openChat")}
           >
             <MessageCircle size={21} />
           </button>
@@ -202,12 +209,12 @@ function Teleconsultation() {
           <button
             onClick={endCall}
             className="end-call-button"
-            title="End consultation"
+            title={t("teleconsultation.endConsultation")}
           >
             <PhoneOff size={21} />
 
             <span>
-              End
+              {t("common.close")}
             </span>
           </button>
 
@@ -221,23 +228,23 @@ function Teleconsultation() {
 
             <div className="consultation-chat-header">
               <strong>
-                Consultation Chat
+                {t("teleconsultation.consultationChat")}
               </strong>
             </div>
 
             <div className="consultation-chat-message">
-              You are securely connected with your healthcare provider.
+              {t("teleconsultation.secureConnectionMessage")}
             </div>
 
             <div className="consultation-chat-input">
 
               <input
                 type="text"
-                placeholder="Type a message..."
+                placeholder={t("teleconsultation.typeMessage")}
               />
 
               <button>
-                Send
+                {t("common.send")}
               </button>
 
             </div>
@@ -251,7 +258,7 @@ function Teleconsultation() {
         <section className="consultation-patient-info">
 
           <p className="eyebrow">
-            PATIENT
+            {t("common.patient")}
           </p>
 
           <strong>
@@ -259,7 +266,7 @@ function Teleconsultation() {
           </strong>
 
           <span>
-            Health ID: {patient.healthId}
+            {t("healthId.myHealthId")}: {patient.healthId}
           </span>
 
         </section>

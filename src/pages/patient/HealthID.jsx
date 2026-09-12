@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { Copy, Check, Link as LinkIcon } from "lucide-react"
 import { HEALTH_ID } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function HealthID() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { t } = useTranslation()
 
   const [copied, setCopied] = useState(false)
   const [abha, setAbha] = useState("")
@@ -22,13 +25,13 @@ function HealthID() {
         setCopied(false)
       }, 2000)
     } catch {
-      alert("Unable to copy Health ID.")
+      alert(t("healthId.unableToCopy"))
     }
   }
 
   const handleLinkAbha = () => {
     if (abha.length !== 14) {
-      alert("Please enter a valid 14-digit ABHA number.")
+      alert(t("healthId.invalidAbha"))
       return
     }
 
@@ -45,7 +48,11 @@ function HealthID() {
 
         <div className="brand">
           <div className="brand-mark">S</div>
-          <span>SWASTH</span>
+          <span>{t("common.brand")}</span>
+        </div>
+
+        <div className="health-id-language">
+          <LanguageSelector />
         </div>
 
 
@@ -56,16 +63,15 @@ function HealthID() {
         </div>
 
         <p className="eyebrow">
-          REGISTRATION COMPLETE
+          {t("healthId.registrationComplete")}
         </p>
 
         <h1>
-          Your health profile is ready
+          {t("healthId.healthProfileReady")}
         </h1>
 
         <p className="health-id-subtitle">
-          Your unique SWASTH Health ID can be used to access
-          your health records across participating healthcare services.
+          {t("healthId.healthProfileDescription")}
         </p>
 
 
@@ -74,7 +80,7 @@ function HealthID() {
         <div className="health-id-box">
 
           <p>
-            Your SWASTH Health ID
+            {t("healthId.yourHealthId")}
           </p>
 
           <div className="health-id-value">
@@ -85,7 +91,7 @@ function HealthID() {
 
             <button
               onClick={copyHealthID}
-              title="Copy Health ID"
+              title={t("healthId.copyTitle")}
               className="copy-button"
             >
               {copied ? (
@@ -99,7 +105,7 @@ function HealthID() {
 
           {copied && (
             <span className="copied-text">
-              Copied to clipboard
+              {t("healthId.copiedToClipboard")}
             </span>
           )}
 
@@ -112,21 +118,21 @@ function HealthID() {
           <div className="profile-summary">
 
             <p className="eyebrow">
-              PROFILE
+              {t("healthId.profile")}
             </p>
 
             <div className="profile-summary-row">
-              <span>Name</span>
+              <span>{t("healthId.name")}</span>
               <strong>{registrationData.name}</strong>
             </div>
 
             <div className="profile-summary-row">
-              <span>Mobile</span>
+              <span>{t("healthId.mobile")}</span>
               <strong>+91 {registrationData.mobile}</strong>
             </div>
 
             <div className="profile-summary-row">
-              <span>District</span>
+              <span>{t("healthId.district")}</span>
               <strong>{registrationData.district || "—"}</strong>
             </div>
 
@@ -146,11 +152,11 @@ function HealthID() {
 
             <div>
               <h3>
-                ABHA Number
+                {t("healthId.abhaNumber")}
               </h3>
 
               <p>
-                Optional
+                {t("healthId.optional")}
               </p>
             </div>
 
@@ -161,8 +167,7 @@ function HealthID() {
 
             <>
               <p className="abha-description">
-                Already have an ABHA Number? You can link it
-                to your SWASTH profile.
+                {t("healthId.abhaDescription")}
               </p>
 
               <input
@@ -175,7 +180,7 @@ function HealthID() {
 
                   setAbha(value)
                 }}
-                placeholder="Enter 14-digit ABHA number"
+                placeholder={t("healthId.abhaPlaceholder")}
                 maxLength="14"
                 inputMode="numeric"
               />
@@ -184,11 +189,11 @@ function HealthID() {
                 onClick={handleLinkAbha}
                 className="secondary-button"
               >
-                Link ABHA
+                {t("healthId.linkAbha")}
               </button>
 
               <p className="abha-note">
-                You can also skip this and link ABHA later.
+                {t("healthId.abhaSkipLater")}
               </p>
             </>
 
@@ -200,7 +205,7 @@ function HealthID() {
 
               <div>
                 <strong>
-                  ABHA linked
+                  {t("healthId.abhaLinked")}
                 </strong>
 
                 <span>
@@ -221,12 +226,11 @@ function HealthID() {
           onClick={() => navigate("/home")}
           className="primary-button"
         >
-          Continue to SWASTH
+          {t("healthId.continueToSwast")}
         </button>
 
         <p className="security-text">
-          Keep your Health ID safe. You may need it when
-          visiting a healthcare worker.
+          {t("healthId.securityText")}
         </p>
 
       </div>

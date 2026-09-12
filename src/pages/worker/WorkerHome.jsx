@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import {
   Users,
   Search,
@@ -7,9 +8,11 @@ import {
   ChevronRight,
   LogOut
 } from "lucide-react"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function WorkerHome() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="home-page">
@@ -32,7 +35,7 @@ function WorkerHome() {
             </div>
 
             <span>
-              SWASTH
+              {t("common.brand")}
             </span>
           </div>
 
@@ -42,12 +45,14 @@ function WorkerHome() {
               marginLeft: "auto"
             }}
           >
-            HEALTHCARE WORKER
+            {t("worker.healthcareWorkerRole")}
           </div>
+
+          <LanguageSelector />
 
           <button
             onClick={() => navigate("/")}
-            title="Logout"
+            title={t("common.logout")}
             style={{
               display: "flex",
               alignItems: "center",
@@ -65,7 +70,7 @@ function WorkerHome() {
           >
             <LogOut size={18} />
             <span>
-              Logout
+              {t("common.logout")}
             </span>
           </button>
 
@@ -82,15 +87,15 @@ function WorkerHome() {
         <section className="welcome-section">
 
           <p className="eyebrow">
-            HEALTHCARE WORKER PORTAL
+            {t("worker.portalTitle")}
           </p>
 
           <h1>
-            Welcome back
+            {t("worker.welcomeBack")}
           </h1>
 
           <p>
-            Access patient information and manage care records.
+            {t("worker.portalSubtitle")}
           </p>
 
         </section>
@@ -106,11 +111,11 @@ function WorkerHome() {
 
           <div>
             <h2>
-              Find a patient
+              {t("worker.findPatient")}
             </h2>
 
             <p>
-              Search using the patient's SWASTH Health ID.
+              {t("worker.searchHealthIdHint")}
             </p>
           </div>
 
@@ -118,7 +123,7 @@ function WorkerHome() {
             onClick={() => navigate("/worker/search")}
             className="primary-button worker-search-button"
           >
-            Search Patient
+            {t("worker.searchPatient")}
           </button>
 
         </section>
@@ -129,7 +134,7 @@ function WorkerHome() {
         <section>
 
           <h2 className="section-title">
-            Quick actions
+            {t("worker.quickActions")}
           </h2>
 
           <div className="feature-grid">
@@ -147,11 +152,11 @@ function WorkerHome() {
 
               <div>
                 <strong>
-                  Patient Records
+                  {t("worker.patientRecords")}
                 </strong>
 
                 <span>
-                  Find and view patient history
+                  {t("worker.findViewHistory")}
                 </span>
               </div>
 
@@ -173,11 +178,11 @@ function WorkerHome() {
 
               <div>
                 <strong>
-                  Add Record
+                  {t("worker.addRecord")}
                 </strong>
 
                 <span>
-                  Select a patient first
+                  {t("worker.selectPatientFirst")}
                 </span>
               </div>
 
@@ -199,11 +204,11 @@ function WorkerHome() {
 
               <div>
                 <strong>
-                  Care Activity
+                  {t("worker.careActivity")}
                 </strong>
 
                 <span>
-                  View recent patient activity
+                  {t("worker.viewRecentActivity")}
                 </span>
               </div>
 

@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: inherit;
+  /* Keep the entire Leaflet map inside its own stacking context.
+     This prevents Leaflet panes from ever painting over dialogs/modals. */
+  position: relative;
+  z-index: 0 !important;
+  isolation: isolate;
+}
+
+/* Appointment/detail dialogs must always sit above Leaflet, including its panes/popups. */
+.swasth-appointment-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid #f0f0f0;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  min-width: 200px;
+}
+
+.leaflet-popup-tip {
+  background: white !important;
+}
+
+/* GPS pulse animation */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

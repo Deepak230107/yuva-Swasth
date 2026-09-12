@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import {
   ArrowLeft,
   UserRound,
@@ -15,9 +16,11 @@ import {
   labReports,
   appointments
 } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function PatientOverview() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="module-page">
@@ -32,8 +35,12 @@ function PatientOverview() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Patient Overview</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("worker.patientOverview")}</h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -52,7 +59,7 @@ function PatientOverview() {
           <div>
 
             <p className="eyebrow">
-              PATIENT
+              {t("worker.patient")}
             </p>
 
             <h2>
@@ -60,15 +67,15 @@ function PatientOverview() {
             </h2>
 
             <p>
-              Health ID: <strong>{patient.healthId}</strong>
+              {t("healthId.myHealthId")}: <strong>{patient.healthId}</strong>
             </p>
 
             <span>
               {patient.gender}
               {" · "}
-              DOB: {patient.dob}
+              {t("auth.dob")}: {patient.dob}
               {" · "}
-              Blood Group: {patient.bloodGroup}
+              {t("worker.bloodGroup")}: {patient.bloodGroup}
             </span>
 
           </div>
@@ -81,7 +88,7 @@ function PatientOverview() {
         <section>
 
           <h2 className="section-title">
-            Patient overview
+            {t("worker.patientOverviewTitle")}
           </h2>
 
           <div className="worker-stat-grid">
@@ -95,7 +102,7 @@ function PatientOverview() {
               </strong>
 
               <span>
-                Medical records
+                {t("worker.medicalRecords")}
               </span>
 
             </div>
@@ -110,7 +117,7 @@ function PatientOverview() {
               </strong>
 
               <span>
-                Active medicines
+                {t("worker.activeMedicines")}
               </span>
 
             </div>
@@ -125,7 +132,7 @@ function PatientOverview() {
               </strong>
 
               <span>
-                Lab reports
+                {t("worker.labReports")}
               </span>
 
             </div>
@@ -140,7 +147,7 @@ function PatientOverview() {
               </strong>
 
               <span>
-                Appointments
+                {t("appointments.myAppointments")}
               </span>
 
             </div>
@@ -155,7 +162,7 @@ function PatientOverview() {
         <section>
 
           <h2 className="section-title">
-            Patient actions
+            {t("worker.patientActions")}
           </h2>
 
           <div className="worker-action-grid">
@@ -173,11 +180,11 @@ function PatientOverview() {
               <div>
 
                 <strong>
-                  Add consultation
+                  {t("worker.addConsultation")}
                 </strong>
 
                 <span>
-                  Create a new medical record
+                  {t("worker.createMedicalRecord")}
                 </span>
 
               </div>
@@ -197,11 +204,11 @@ function PatientOverview() {
               <div>
 
                 <strong>
-                  Prescribe medicine
+                  {t("worker.prescribeMedicine")}
                 </strong>
 
                 <span>
-                  Add a medication to the patient record
+                  {t("worker.addMedicationRecord")}
                 </span>
 
               </div>
@@ -221,11 +228,11 @@ function PatientOverview() {
               <div>
 
                 <strong>
-                  Add lab result
+                  {t("worker.addLabResult")}
                 </strong>
 
                 <span>
-                  Record a diagnostic result
+                  {t("worker.recordDiagnosticResult")}
                 </span>
 
               </div>

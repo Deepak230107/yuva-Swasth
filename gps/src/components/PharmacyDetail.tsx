@@ -1,0 +1,15 @@
+"use client";
+
+import { Pharmacy } from "@/types/medical";
+
+interface PharmacyDetailProps { pharmacy: Pharmacy; onClose: () => void; }
+
+export default function PharmacyDetail({ pharmacy, onClose }: PharmacyDetailProps) {
+  const googleSearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${pharmacy.name}, ${pharmacy.address}`)}`;
+  const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${pharmacy.lat},${pharmacy.lng}`)}&travelmode=driving`;
+  return <div className="flex flex-col h-full bg-white">
+    <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-4"><div className="flex items-start justify-between"><div><div className="text-xs text-emerald-200 mb-1">Live mapped medical shop</div><h2 className="font-bold text-lg leading-tight">{pharmacy.name}</h2><p className="text-emerald-200 text-sm mt-1">Pharmacy / medical shop</p></div><button onClick={onClose} className="p-1.5 hover:bg-white/20 rounded-full">✕</button></div>{pharmacy.distance !== undefined && <p className="text-emerald-200 text-xs mt-3">📏 {pharmacy.distance < 1 ? `${Math.round(pharmacy.distance * 1000)} m` : `${pharmacy.distance.toFixed(1)} km`} from your current location</p>}</div>
+    <div className="grid grid-cols-2 gap-2 p-3 border-b"><button onClick={() => window.open(directions, "_blank", "noopener,noreferrer")} className="p-2 bg-blue-50 text-blue-700 rounded-xl text-xs font-semibold">🗺️ Directions</button><button disabled={!pharmacy.phone} onClick={() => pharmacy.phone && window.open(`tel:${pharmacy.phone}`)} className="p-2 bg-green-50 text-green-700 rounded-xl text-xs font-semibold disabled:opacity-40">📞 Call</button></div>
+    <div className="flex-1 overflow-y-auto p-3 space-y-3"><section className="rounded-xl bg-gray-50 p-3"><h3 className="text-xs font-bold uppercase text-gray-500 mb-2">Real details</h3><div className="space-y-2 text-sm text-gray-700"><p>📍 {pharmacy.address}</p>{pharmacy.phone ? <p>📞 <a className="text-blue-600 hover:underline" href={`tel:${pharmacy.phone}`}>{pharmacy.phone}</a></p> : <p className="text-gray-400">Phone number is not listed in the live map data.</p>}{pharmacy.website ? <p>🌐 <a className="text-blue-600 hover:underline" href={pharmacy.website.startsWith("http") ? pharmacy.website : `https://${pharmacy.website}`} target="_blank" rel="noreferrer">{pharmacy.website}</a></p> : null}{pharmacy.openingHoursText ? <p>🕐 {pharmacy.openingHoursText}</p> : <p className="text-gray-400">Opening hours are not listed in the live map data.</p>}</div></section><section className="rounded-xl border border-gray-100 p-3"><p className="text-xs text-gray-500">Source: <strong>{pharmacy.source || "OpenStreetMap"}</strong></p><p className="text-xs text-gray-400 mt-1">Medicine stock, prices, ratings, reviews and verification are not invented when the live source does not provide them.</p></section><button onClick={() => window.open(googleSearch, "_blank", "noopener,noreferrer")} className="w-full border border-gray-200 rounded-xl py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50">Open this medical shop in Google Maps</button></div>
+  </div>;
+}

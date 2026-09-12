@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, FileText, ChevronRight } from "lucide-react"
 import { patient, medicalRecords } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Records() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="module-page">
@@ -17,26 +20,28 @@ function Records() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Health Records</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("records.myRecords")}</h1>
         </div>
-      </header>
+        <div className="module-header-actions">
+          <LanguageSelector />
+        </div>      </header>
 
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("common.patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>{t("healthId.myHealthId")}: {patient.healthId}</small>
         </section>
 
         <div className="module-section-heading">
           <div>
-            <p className="eyebrow">MEDICAL HISTORY</p>
-            <h2>Your records</h2>
+            <p className="eyebrow">{t("records.medicalHistory")}</p>
+            <h2>{t("records.yourRecords")}</h2>
           </div>
 
-          <span>{medicalRecords.length} records</span>
+          <span>{medicalRecords.length} {t("records.recordsCount")}</span>
         </div>
 
         <div className="record-list">

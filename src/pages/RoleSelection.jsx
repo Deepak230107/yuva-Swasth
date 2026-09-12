@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { UserRound, Stethoscope } from "lucide-react"
+import LanguageSelector from "../components/LanguageSelector"
 
 function RoleSelection() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="role-page">
@@ -10,12 +13,15 @@ function RoleSelection() {
       <div className="role-container">
 
         <div className="role-header">
-          <p className="module-label">SWASTH</p>
+          <div className="role-header-top">
+            <p className="module-label">{t("common.brand")}</p>
+            <LanguageSelector />
+          </div>
 
-          <h1>How are you accessing SWASTH?</h1>
+          <h1>{t("role.howAccess")}</h1>
 
           <p>
-            Select your role to continue.
+            {t("role.selectRolePrompt")}
           </p>
         </div>
 
@@ -30,9 +36,9 @@ function RoleSelection() {
             </div>
 
             <div>
-              <strong>Patient</strong>
+              <strong>{t("role.patient")}</strong>
               <span>
-                Access your health records and care journey.
+                {t("role.patientDesc")}
               </span>
             </div>
           </button>
@@ -47,9 +53,9 @@ function RoleSelection() {
             </div>
 
             <div>
-              <strong>Healthcare Worker</strong>
+              <strong>{t("role.healthcareWorker")}</strong>
               <span>
-                Manage patient records and provide care.
+                {t("role.workerDesc")}
               </span>
             </div>
           </button>

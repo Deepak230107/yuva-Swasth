@@ -11,3 +11,8 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+export function openNearbyMedicalShops(latitude, longitude) {
+  const medicalShopUrl = `https://www.google.com/maps/search/medical+shop+near+me/@${latitude},${longitude},13.25z?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D`;
+  return openUrl(medicalShopUrl);
+}

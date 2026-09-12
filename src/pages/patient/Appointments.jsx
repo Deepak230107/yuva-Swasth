@@ -1,19 +1,23 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import {
   ArrowLeft,
   CalendarDays,
   MapPin,
   User,
-  Video
+  Video,
+  Navigation
 } from "lucide-react"
 
 import {
   patient,
   appointments
 } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Appointments() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="module-page">
@@ -32,12 +36,16 @@ function Appointments() {
 
         <div>
           <p className="module-label">
-            SWASTH
+            {t("common.brand")}
           </p>
 
           <h1>
-            Appointments
+            {t("nav.appointments")}
           </h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -52,7 +60,7 @@ function Appointments() {
         <section className="patient-summary">
 
           <span>
-            Patient
+            {t("common.patient")}
           </span>
 
           <strong>
@@ -60,7 +68,7 @@ function Appointments() {
           </strong>
 
           <small>
-            Health ID: {patient.healthId}
+            {t("healthId.myHealthId")}: {patient.healthId}
           </small>
 
         </section>
@@ -72,16 +80,16 @@ function Appointments() {
 
           <div>
             <p className="eyebrow">
-              CARE SCHEDULE
+              {t("appointments.careSchedule")}
             </p>
 
             <h2>
-              Your appointments
+              {t("appointments.yourAppointments")}
             </h2>
           </div>
 
           <span>
-            {appointments.length} appointments
+            {appointments.length} {t("appointments.appointmentsCount")}
           </span>
 
         </div>
@@ -159,6 +167,16 @@ function Appointments() {
                 </span>
 
 
+                <button
+                  onClick={() => navigate("/gps")}
+                  className="gps-button"
+                >
+                  <Navigation size={17} />
+                  <span>
+                    {t("appointments.getDirections")}
+                  </span>
+                </button>
+
                 {/* Teleconsultation */}
 
                 {appointment.status === "Upcoming" && (
@@ -169,7 +187,7 @@ function Appointments() {
                     <Video size={17} />
 
                     <span>
-                      Join Teleconsultation
+                      {t("appointments.joinTeleconsultation")}
                     </span>
                   </button>
                 )}

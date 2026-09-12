@@ -175,6 +175,31 @@ export const careJourney = [
 ]
 
 
+export const todayUpdates = [
+  {
+    updateId: "TU001",
+    title: "Medication reminder",
+    description: "Paracetamol 500 mg is due today at 10:00 AM.",
+    time: "10:00 AM",
+    status: "Today"
+  },
+  {
+    updateId: "TU002",
+    title: "Lab status",
+    description: "Your latest blood glucose report is ready.",
+    time: "11:30 AM",
+    status: "Ready"
+  },
+  {
+    updateId: "TU003",
+    title: "Care note",
+    description: "Hydration and rest are recommended after the visit.",
+    time: "01:00 PM",
+    status: "Plan"
+  }
+]
+
+
 export const healthWorkers = [
   {
     workerId: "HW001",

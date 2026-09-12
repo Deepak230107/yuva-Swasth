@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import {
   ArrowLeft,
   Search,
@@ -8,9 +9,11 @@ import {
 } from "lucide-react"
 
 import { patient } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function PatientSearch() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [healthId, setHealthId] = useState("")
   const [found, setFound] = useState(false)
@@ -39,19 +42,23 @@ function PatientSearch() {
         <button
           onClick={() => navigate("/worker")}
           className="back-button"
-          title="Back"
+          title={t("common.back")}
         >
           <ArrowLeft size={20} />
         </button>
 
         <div>
           <p className="module-label">
-            SWASTH
+            {t("common.brand")}
           </p>
 
           <h1>
-            Find Patient
+            {t("worker.findPatient")}
           </h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -71,11 +78,11 @@ function PatientSearch() {
 
           <div>
             <h2>
-              Search by Health ID
+              {t("worker.searchByHealthId")}
             </h2>
 
             <p>
-              Enter the patient's unique SWASTH Health ID.
+              {t("worker.searchHealthIdHint")}
             </p>
           </div>
 
@@ -95,14 +102,14 @@ function PatientSearch() {
                   searchPatient()
                 }
               }}
-              placeholder="Example: SW-82X7-19Q4"
+              placeholder={t("worker.exampleHealthId")}
             />
 
             <button
               onClick={searchPatient}
               className="primary-button"
             >
-              Search
+              {t("common.search")}
             </button>
 
           </div>
@@ -126,11 +133,11 @@ function PatientSearch() {
               </strong>
 
               <span>
-                Health ID: {patient.healthId}
+                {t("worker.healthIdPrefix")}: {patient.healthId}
               </span>
 
               <small>
-                {patient.gender} · DOB: {patient.dob}
+                {patient.gender} · {t("worker.dobLabel")}: {patient.dob}
               </small>
 
             </div>
@@ -139,7 +146,7 @@ function PatientSearch() {
               onClick={() => navigate("/worker/patient")}
               className="primary-button"
             >
-              View Patient
+              {t("worker.viewPatient")}
             </button>
 
           </section>
@@ -158,15 +165,15 @@ function PatientSearch() {
             <div className="record-content">
 
               <strong>
-                Patient not found
+                {t("worker.patientNotFound")}
               </strong>
 
               <span>
-                No patient matches this Health ID.
+                {t("worker.noPatientMatches")}
               </span>
 
               <small>
-                Check the Health ID and try again.
+                {t("worker.checkHealthId")}
               </small>
 
             </div>

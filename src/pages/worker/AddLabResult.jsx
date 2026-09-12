@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, Save } from "lucide-react"
 import { patient, labReports } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function AddLabResult() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [form, setForm] = useState({
     testName: "",
@@ -56,8 +59,12 @@ function AddLabResult() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Add Lab Result</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("worker.addLabResult")}</h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -65,9 +72,9 @@ function AddLabResult() {
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("worker.patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>{t("healthId.myHealthId")}: {patient.healthId}</small>
         </section>
 
         <form
@@ -76,16 +83,16 @@ function AddLabResult() {
         >
 
           <div className="form-heading">
-            <p className="eyebrow">DIAGNOSTIC RECORD</p>
-            <h2>Lab result</h2>
+            <p className="eyebrow">{t("worker.diagnosticRecord")}</p>
+            <h2>{t("worker.labResult")}</h2>
             <p>
-              Record the result of a diagnostic test.
+              {t("worker.labResultInstruction")}
             </p>
           </div>
 
           <div className="form-field">
             <label htmlFor="testName">
-              Test name
+              {t("worker.testName")}
             </label>
 
             <input
@@ -93,14 +100,14 @@ function AddLabResult() {
               name="testName"
               value={form.testName}
               onChange={handleChange}
-              placeholder="Example: Complete Blood Count"
+              placeholder={t("worker.testNamePlaceholder")}
               required
             />
           </div>
 
           <div className="form-field">
             <label htmlFor="result">
-              Result
+              {t("worker.result")}
             </label>
 
             <input
@@ -108,14 +115,14 @@ function AddLabResult() {
               name="result"
               value={form.result}
               onChange={handleChange}
-              placeholder="Example: Within normal range"
+              placeholder={t("worker.resultPlaceholder")}
               required
             />
           </div>
 
           <div className="form-field">
             <label htmlFor="status">
-              Status
+              {t("worker.status")}
             </label>
 
             <select
@@ -124,9 +131,9 @@ function AddLabResult() {
               value={form.status}
               onChange={handleChange}
             >
-              <option value="Normal">Normal</option>
-              <option value="Attention">Needs attention</option>
-              <option value="Critical">Critical</option>
+              <option value="Normal">{t("worker.normal")}</option>
+              <option value="Attention">{t("worker.needsAttention")}</option>
+              <option value="Critical">{t("worker.critical")}</option>
             </select>
           </div>
 
@@ -135,7 +142,7 @@ function AddLabResult() {
             className="primary-button save-record-button"
           >
             <Save size={18} />
-            Save Lab Result
+            {t("worker.saveLabResult")}
           </button>
 
         </form>

@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, Save } from "lucide-react"
 import { patient, medicalRecords } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function AddRecord() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const [form, setForm] = useState({
     diagnosis: "",
@@ -58,8 +61,12 @@ function AddRecord() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Add Consultation</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("worker.addConsultation")}</h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
@@ -68,9 +75,9 @@ function AddRecord() {
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("worker.patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>{t("healthId.myHealthId")}: {patient.healthId}</small>
         </section>
 
 
@@ -80,10 +87,10 @@ function AddRecord() {
         >
 
           <div className="form-heading">
-            <p className="eyebrow">NEW MEDICAL RECORD</p>
-            <h2>Consultation details</h2>
+            <p className="eyebrow">{t("worker.newMedicalRecord")}</p>
+            <h2>{t("worker.consultationDetails")}</h2>
             <p>
-              Record the information from today's consultation.
+              {t("worker.consultationInfo")}
             </p>
           </div>
 
@@ -91,7 +98,7 @@ function AddRecord() {
           <div className="form-field">
 
             <label htmlFor="diagnosis">
-              Diagnosis
+              {t("worker.diagnosis")}
             </label>
 
             <input
@@ -99,7 +106,7 @@ function AddRecord() {
               name="diagnosis"
               value={form.diagnosis}
               onChange={handleChange}
-              placeholder="Enter diagnosis"
+              placeholder={t("worker.diagnosisPlaceholder")}
               required
             />
 
@@ -109,7 +116,7 @@ function AddRecord() {
           <div className="form-field">
 
             <label htmlFor="notes">
-              Clinical Notes
+              {t("worker.clinicalNotes")}
             </label>
 
             <textarea
@@ -117,7 +124,7 @@ function AddRecord() {
               name="notes"
               value={form.notes}
               onChange={handleChange}
-              placeholder="Enter relevant observations and notes"
+              placeholder={t("worker.notesPlaceholder")}
               rows="5"
             />
 
@@ -127,7 +134,7 @@ function AddRecord() {
           <div className="form-field">
 
             <label htmlFor="treatment">
-              Treatment / Advice
+              {t("worker.treatmentAdvice")}
             </label>
 
             <textarea
@@ -135,7 +142,7 @@ function AddRecord() {
               name="treatment"
               value={form.treatment}
               onChange={handleChange}
-              placeholder="Enter treatment or advice given"
+              placeholder={t("worker.treatmentPlaceholder")}
               rows="4"
             />
 
@@ -147,7 +154,7 @@ function AddRecord() {
             className="primary-button save-record-button"
           >
             <Save size={18} />
-            Save Consultation
+            {t("worker.saveConsultation")}
           </button>
 
         </form>

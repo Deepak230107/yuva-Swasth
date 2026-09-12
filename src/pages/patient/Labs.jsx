@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import { ArrowLeft, FlaskConical } from "lucide-react"
 import { patient, labReports } from "../../data/mockData"
+import LanguageSelector from "../../components/LanguageSelector"
 
 function Labs() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <div className="module-page">
@@ -17,26 +20,28 @@ function Labs() {
         </button>
 
         <div>
-          <p className="module-label">SWASTH</p>
-          <h1>Lab Reports</h1>
+          <p className="module-label">{t("common.brand")}</p>
+          <h1>{t("nav.labs")}</h1>
         </div>
-      </header>
+        <div className="module-header-actions">
+          <LanguageSelector />
+        </div>      </header>
 
       <main className="module-main">
 
         <section className="patient-summary">
-          <span>Patient</span>
+          <span>{t("common.patient")}</span>
           <strong>{patient.name}</strong>
-          <small>Health ID: {patient.healthId}</small>
+          <small>{t("healthId.myHealthId")}: {patient.healthId}</small>
         </section>
 
         <div className="module-section-heading">
           <div>
-            <p className="eyebrow">DIAGNOSTIC RESULTS</p>
-            <h2>Your lab reports</h2>
+            <p className="eyebrow">{t("labs.diagnosticResults")}</p>
+            <h2>{t("labs.yourLabReports")}</h2>
           </div>
 
-          <span>{labReports.length} reports</span>
+          <span>{labReports.length} {t("labs.reportsCount")}</span>
         </div>
 
         <div className="record-list">
