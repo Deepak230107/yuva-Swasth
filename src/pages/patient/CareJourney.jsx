@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import LanguageSelector from "../../components/LanguageSelector"
 
 import {
   ArrowLeft,
@@ -37,6 +38,10 @@ function CareJourney() {
           <h1>
             {t("careJourney")}
           </h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>

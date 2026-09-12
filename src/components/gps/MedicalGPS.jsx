@@ -6,6 +6,7 @@ import { getCurrentLocation } from "../../services/location";
 import { openDirections } from "../../services/googleMaps";
 import { fetchNearbyPlaces } from "../../services/openStreetMap";
 import MedicalMap from "../MedicalMap";
+import LanguageSelector from "../LanguageSelector";
 
 const CITY_COORDINATES = {
   Madurai: [9.9252, 78.1198],
@@ -299,6 +300,7 @@ export default function MedicalGPS() {
           <h1>GPS Locator</h1>
         </div>
         <div className="module-header-actions">
+          <LanguageSelector />
           <button type="button" className="primary-button" onClick={getUserLocation}>
             {locationLoading ? "Locating..." : "Use my location"}
           </button>

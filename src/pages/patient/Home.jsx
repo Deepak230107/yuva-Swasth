@@ -12,7 +12,8 @@ import {
   MessageCircle,
   ChevronRight,
   X,
-  LogOut
+  LogOut,
+  MapPin
 } from "lucide-react"
 
 import { patient, appointments } from "../../data/mockData"
@@ -55,6 +56,12 @@ function Home() {
       label: t("careJourney"),
       icon: Route,
       path: "/care-journey"
+    },
+    {
+      name: "Medical GPS",
+      label: t("medicalGps", "Medical GPS"),
+      icon: MapPin,
+      path: "/gps"
     }
   ]
 

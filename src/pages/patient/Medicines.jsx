@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { ArrowLeft, Pill, Clock } from "lucide-react"
 import { patient, medicines } from "../../data/mockData"
-
+import LanguageSelector from "../../components/LanguageSelector"
 function Medicines() {
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -23,6 +23,10 @@ function Medicines() {
         <div>
           <p className="module-label">SWASTH</p>
           <h1>{t("medicines")}</h1>
+        </div>
+
+        <div className="module-header-actions">
+          <LanguageSelector />
         </div>
 
       </header>
